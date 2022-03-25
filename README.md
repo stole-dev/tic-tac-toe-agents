@@ -6,9 +6,13 @@ Three agents are now available and work:
 - Monte Carlo Tree Search Agent
 - Minimax Agent
 - Minimax with Alpha Beta Pruning Agent
-#
-#
-#
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 Before you take a look at the code please know:
 - code is written in a hurry
 - code is written trough learning about AI
