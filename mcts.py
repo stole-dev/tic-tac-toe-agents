@@ -98,14 +98,6 @@ def choose_random_move(board):
     return random.choice(moves)
 
 
-def play_move(board, board_cache):
-    node = Node(board)
-    legal_moves = get_legal_moves(board)
-    if not node.visits:
-        pass
-    return ''
-
-
 def find_or_create_node(board, board_cache):
     node = board_cache.get(board.board.tobytes())
     if not node:
@@ -153,14 +145,6 @@ def calculate_value(move, parent_board, board_cache):
             node.parents.append(parent_node)
         return [move, math.inf]
 
-    # elif node.is_win:
-    #     return [move, math.inf]
-    #
-    # elif node.is_loss:
-    #     return [move, -math.inf]
-    #
-    # elif node.is_draw:
-    #     return [move, 1000]
     new_value = node.node_value + (math.sqrt(2) * math.sqrt(math.log(get_root_node_visits(board_cache)) / node.visits))
     return [move, new_value, node]
 
@@ -179,14 +163,8 @@ def calculate_node_value(node):
 
 
 def backpropagate(game_history, value, board_cache):
-    # This won't work because there can be many ways to come to the same state and therefore
-    # not right parents will be updated
-    # for parent in node.parents:
-    #     update_node_with_result(parent, value)
-    #     backpropagate(parent, value)
     for board in game_history:
         update_node_with_result(find_node(board, board_cache), value)
-
 
 
 def get_legal_moves(board):
